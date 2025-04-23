@@ -12,5 +12,6 @@ class Comment extends Model
     protected $fillable = [
         'content',
         'profile_id',
+        'administrator_id',
     ];
 }

@@ -10,10 +10,13 @@ class Profile extends Model
 {
     use HasFactory;
 
+    protected $table = "profiles";
+
     protected $fillable = [
         'firstname',
         'lastname',
         'status',
+        'administrator_id'
     ];
 
     public function comments(): HasMany

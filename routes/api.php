@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/profiles', [ProfileController::class, 'list']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('/comment/create', [CommentController::class, 'create']);
+
+    Route::prefix('/profile')->group(function () {
+        Route::post('/create', [ProfileController::class, 'create']);
+        Route::put('/update/{profile}', [ProfileController::class, 'edit']);
+        Route::delete('/delete/{profile}', [ProfileController::class, 'delete']);
+    });
 });
