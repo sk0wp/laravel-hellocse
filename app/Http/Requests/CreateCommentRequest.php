@@ -7,6 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
+use Symfony\Component\HttpFoundation\Response;
 
 class CreateCommentRequest extends FormRequest
 {
@@ -25,7 +26,8 @@ class CreateCommentRequest extends FormRequest
             'error' => 'true',
             'message' => 'Create comment failed',
             'errorsList' => $validator->errors()
-        ]));
+        ],
+        Response::HTTP_BAD_REQUEST));
     }
 
     /**

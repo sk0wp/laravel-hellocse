@@ -22,7 +22,7 @@ class CommentController extends Controller
                 'success' => true,
                 'message' => 'Comment created successfully',
                 'data' => $comment
-            ], Response::HTTP_CREATED); // 201 = Created
+            ], Response::HTTP_CREATED);
         } catch (\Exception $exception) {
             return response()->json([
                 'success' => false,

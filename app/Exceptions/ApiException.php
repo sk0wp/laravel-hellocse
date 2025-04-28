@@ -7,7 +7,7 @@ use Illuminate\Http\JsonResponse;
 
 class ApiException extends Exception
 {
-    public function render($request): JsonResponse
+    public function render(): JsonResponse
     {
         return response()->json([
             'error' => true,

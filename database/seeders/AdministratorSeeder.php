@@ -13,11 +13,8 @@ class AdministratorSeeder extends Seeder
      */
     public function run(): void
     {
-        $token = Str::random(60);
-        echo $token;
-
         Administrator::create([
-            'api_token' => hash('sha256', $token),
+            'api_token' => hash('sha256', Str::random(60)),
         ]);
     }
 }
