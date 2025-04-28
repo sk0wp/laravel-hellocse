@@ -16,7 +16,8 @@ class Profile extends Model
         'firstname',
         'lastname',
         'status',
-        'administrator_id'
+        'administrator_id',
+        'image'
     ];
 
     public function comments(): HasMany

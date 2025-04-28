@@ -18,6 +18,7 @@ class ProfileResource extends JsonResource
             'id' => $this->id,
             'firstname' => $this->firstname,
             'lastname' => $this->lastname,
+            'image' => $this->image,
              $this->mergeWhen(auth('api')->check(), [
                  'status' => $this->status]
              ),

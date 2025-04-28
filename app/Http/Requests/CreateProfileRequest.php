@@ -9,7 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rules\Enum;
 
-class CreateEditProfileRequest extends FormRequest
+class CreateProfileRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -22,7 +22,7 @@ class CreateEditProfileRequest extends FormRequest
         throw new HttpResponseException(response()->json([
             'success' => false,
             'error' => 'true',
-            'message' => 'Create/Edit failed',
+            'message' => 'Create failed',
             'errorsList' => $validator->errors()
         ]));
     }
@@ -39,6 +39,7 @@ class CreateEditProfileRequest extends FormRequest
             'lastname' => ['string', 'required', 'max:255'],
             'status' => [new Enum(ProfileStatusEnum::class), 'required'],
             'administrator_id' => ['exists:administrators,id', 'required'],
+            'image' => ['nullable', 'image', 'max:2048', 'required'],
         ];
     }
 

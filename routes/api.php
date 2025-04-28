@@ -22,7 +22,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::prefix('/profile')->group(function () {
         Route::post('/create', [ProfileController::class, 'create']);
-        Route::put('/update/{profile}', [ProfileController::class, 'edit']);
-        Route::delete('/delete/{profile}', [ProfileController::class, 'delete']);
+        Route::post('/edit', [ProfileController::class, 'edit']);
+        Route::delete('/edit', [ProfileController::class, 'delete']);
     });
 });
